@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Sharomank.RegexTester.RegexTesterMain"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vsfx="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.10.0"
+             xmlns:uc="clr-namespace:Sharomank.RegexTester"
+             mc:Ignorable="d" 
+             FontSize="12"
+             Name="RootControl" KeyDown="RootControl_KeyDown">
+    <TabControl Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged">
+        <TabControl.ContextMenu>
+            <ContextMenu>
+                <MenuItem Name="MenuItem_CloseTab"  Header="Close Tab" InputGestureText="Ctrl + Shift + W" Click="MenuItem_CloseTab_Click"/>
+                <MenuItem Name="MenuItem_CloseOtherTabs" Header="Close Others Tabs" Click="MenuItem_CloseOtherTabs_Click" />
+                <MenuItem Name="MenuItem_CloseAllTabs" Header="Close All Tabs" Click="MenuItem_CloseAllTabs_Click" />
+                <Separator />
+                <MenuItem Name="MenuItem_NewTab" Header="New Tab" InputGestureText="Ctrl + T" Click="MenuItem_NewTab_Click" />
+            </ContextMenu>
+        </TabControl.ContextMenu>
+        <TabItem Header="+" Name="tabItemAdd" ToolTip="New Tab" FontWeight="Normal" FontSize="12" IsSelected="False" />
+        <TabItem Header="Regex Test 1" Name="tabItemTest1" IsSelected="True">
+            <uc:RegexTesterPage />
+        </TabItem>
+    </TabControl>
+</UserControl>
