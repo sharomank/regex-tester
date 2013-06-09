@@ -12,7 +12,7 @@ using System.Windows.Documents;
 namespace Sharomank.RegexTester
 {
     /// <summary>
-    /// Author: Roman Kurbangaliev (Sharomank)
+    /// Author: Roman Kurbangaliyev (sharomank)
     /// </summary>
     public partial class RegexTesterPage : UserControl
     {

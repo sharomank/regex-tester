@@ -15,13 +15,13 @@
         defining some of the constants that we will use inside the file. -->
 
   <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
-  <Extern href="stdidcmd.h"/>
+  <Extern href="stdidcmd.h" />
 
   <!--This header contains the command ids for the menus provided by the shell. -->
-  <Extern href="vsshlids.h"/>
+  <Extern href="vsshlids.h" />
 
   <!--Definition of some VSCT specific constants. In this sample we use it for the IDs inside the guidOfficeIcon group. -->
-  <Extern href="msobtnid.h"/>
+  <!--<Extern href="msobtnid.h" xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" />-->
 
 
 
@@ -61,7 +61,7 @@
 
 
       <Button guid="guidRegexTesterCmdSet" id="cmdidRegexTester" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
         <Icon guid="guidImages" id="bmpPicSearch" />
         <Strings>
           <CommandName>cmdidRegexTester</CommandName>
@@ -79,14 +79,13 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used 
             inside a button definition. An important aspect of this declaration is that the element id 
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\Images_32bit.bmp" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows"/>
+      <Bitmap guid="guidImages" href="Resources\Images_32bit.bmp" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows" />
 
     </Bitmaps>
  
   </Commands>
   <KeyBindings>
-    <KeyBinding guid="guidRegexTesterCmdSet" id="cmdidRegexTester"
-       key1="R" mod1="Shift Alt" editor="guidVSStd97" />
+    <KeyBinding guid="guidRegexTesterCmdSet" id="cmdidRegexTester" key1="R" mod1="Shift Alt" editor="guidVSStd97" />
   </KeyBindings>
   <Symbols>
     <!-- This is the package guid. -->
@@ -101,7 +100,7 @@
     
     
     
-    <GuidSymbol name="guidImages" value="{e68e5633-24cd-4475-b49c-66213f45aeba}" >
+    <GuidSymbol name="guidImages" value="{e68e5633-24cd-4475-b49c-66213f45aeba}">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />

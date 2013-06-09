@@ -7,7 +7,7 @@ using Sharomank.RegexTester.Common;
 namespace Sharomank.RegexTester.Handlers
 {
     /// <summary>
-    /// Author: Roman Kurbangaliev (Sharomank)
+    /// Author: Roman Kurbangaliyev (sharomank)
     /// </summary>
     public class RegexProcessHandler
     {

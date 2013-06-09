@@ -6,7 +6,7 @@ using System.Windows.Input;
 namespace Sharomank.RegexTester
 {
     /// <summary>
-    /// Author: Roman Kurbangaliev (Sharomank)
+    /// Author: Roman Kurbangaliyev (sharomank)
     /// </summary>
     public partial class RegexTesterMain : UserControl
     {
@@ -28,8 +28,8 @@ namespace Sharomank.RegexTester
             TabItem newTab = new TabItem();
             newTab.Header = GetTabItemName(MainTabControl);
             newTab.Content = new RegexTesterPage();
-            newTab.IsSelected = true;
             MainTabControl.Items.Add(newTab);
+            Dispatcher.BeginInvoke(new Action(() => { newTab.Focus(); }));
         }
 
         private void CloseTab()
@@ -46,7 +46,7 @@ namespace Sharomank.RegexTester
 
         private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (tabItemAdd.IsSelected)
+            if (tabItemCreator.IsSelected)
             {
                 AddNewTab();
             }

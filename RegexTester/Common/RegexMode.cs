@@ -2,7 +2,7 @@
 namespace Sharomank.RegexTester.Common
 {
     /// <summary>
-    /// Author: Roman Kurbangaliev (Sharomank)
+    /// Author: Roman Kurbangaliyev (sharomank)
     /// </summary>
     public enum RegexMode
     {

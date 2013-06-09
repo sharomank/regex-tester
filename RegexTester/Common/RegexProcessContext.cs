@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 namespace Sharomank.RegexTester.Common
 {
     /// <summary>
-    /// Author: Roman Kurbangaliev (Sharomank)
+    /// Author: Roman Kurbangaliyev (sharomank)
     /// </summary>
     public class RegexProcessContext
     {

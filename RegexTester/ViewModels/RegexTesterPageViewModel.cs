@@ -6,7 +6,7 @@ using System.Windows.Media;
 namespace Sharomank.RegexTester.Common
 {
     /// <summary>
-    /// Author: Roman Kurbangaliev (Sharomank)
+    /// Author: Roman Kurbangaliyev (sharomank)
     /// </summary>
     public class RegexTesterPageViewModel : INotifyPropertyChanged
     {
