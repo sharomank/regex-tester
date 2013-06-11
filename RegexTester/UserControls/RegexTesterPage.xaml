@@ -113,9 +113,8 @@
                         <CheckBox Name="cbSingleline"
                                   ToolTip="Specifies single-line mode. Changes the meaning of the dot (.) so it matches every character (instead of every character except \n)."
                                   Style="{StaticResource CheckBox}"
-                                  
+                                  IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
                                   Click="CheckBox_Click">Singleline</CheckBox>
-                        <!--IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"-->
                         <CheckBox Name="cbIgnoreCase"
                                   ToolTip="Specifies case-insensitive matching."
                                   Style="{StaticResource CheckBox}"
@@ -123,15 +122,13 @@
                         <CheckBox Name="cbIgnorePatternWhitespace"
                                   ToolTip="Eliminates unescaped white space from the pattern and enables comments marked with #. However, the IgnorePatternWhitespace value does not affect or eliminate white space in character classes."
                                   Style="{StaticResource CheckBox}"
-                                  
+                                  IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
                                   Click="CheckBox_Click">IgnorePatternWhitespace</CheckBox>
-                        <!--IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"-->
                         <CheckBox Name="cbCultureInvariant"
                                   ToolTip="Specifies that cultural differences in language is ignored. See Performing Culture-Insensitive Operations in the RegularExpressions Namespace for more information."
                                   Style="{StaticResource CheckBox}"
-                                  
+                                  IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
                                   Click="CheckBox_Click">CultureInvariant</CheckBox>
-                        <!--IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"-->
                         <CheckBox Name="cbECMAScript"
                                   ToolTip="Enables ECMAScript-compliant behavior for the expression. This value can be used only in conjunction with the IgnoreCase, Multiline, and Compiled values. The use of this value with any other values results in an exception."
                                   Style="{StaticResource CheckBox}"
@@ -139,15 +136,13 @@
                         <CheckBox Name="cbExplicitCapture"
                                   ToolTip="Specifies that the only valid captures are explicitly named or numbered groups of the form (?&lt;name&gt;…). This allows unnamed parentheses to act as noncapturing groups without the syntactic clumsiness of the expression (?:…)."
                                   Style="{StaticResource CheckBox}"
-                                  
+                                  IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
                                   Click="CheckBox_Click">ExplicitCapture</CheckBox>
-                        <!--IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"-->
                         <CheckBox Name="cbRightToLeft"
                                   ToolTip="Specifies that the search will be from right to left instead of from left to right."
                                   Style="{StaticResource CheckBox}"
-                                  
+                                  IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
                                   Click="CheckBox_Click">RightToLeft</CheckBox>
-                        <!--IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"-->
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
