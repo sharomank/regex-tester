@@ -241,8 +241,8 @@ namespace Sharomank.RegexTester
 
         private void RefreshHeaders()
         {
-            gbInput.Header = string.Format("Input text, length : {0}, lines : {1}", tbInputText.Text.Length, tbInputText.LineCount);
-            gbOutput.Header = string.Format("Output text, length : {0}, lines : {1}", tbOutputText.Text.Length, tbOutputText.LineCount);
+            gbInput.Header = string.Format("Input text, length: {0}, lines: {1}", tbInputText.Text.Length, tbInputText.LineCount);
+            gbOutput.Header = string.Format("Output text, length: {0}, lines: {1}", tbOutputText.Text.Length, tbOutputText.LineCount);
         }
 
         private void AutorunProcess()

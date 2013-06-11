@@ -3,7 +3,7 @@
   <Identifier Id="dcad2d98-1e91-4090-81a0-ec0641347bf8">
     <Name>Regex Tester</Name>
     <Author>Roman Kurbangaliyev</Author>
-    <Version>1.3</Version>
+    <Version>1.3.1</Version>
     <Description xml:space="preserve">Regular expression tester for Visual Studio 2010, 2012.</Description>
     <Locale>1033</Locale>
     <MoreInfoUrl>http://visualstudiogallery.msdn.microsoft.com/16b9d664-d88c-460e-84a5-700ab40ba452</MoreInfoUrl>

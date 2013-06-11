@@ -25,27 +25,41 @@
             <Setter Property="Foreground" Value="DarkBlue"></Setter>
         </Style>
         <Style x:Key="toggleStyle" BasedOn="{StaticResource {x:Type ToggleButton}}" TargetType="{x:Type RadioButton}">
-            <Style.Triggers>
-                <Trigger Property="IsChecked" Value="True">
-                    <Setter Property="FontWeight" Value="Bold" />
-                    <Setter Property="Foreground" Value="#FF0000F5" />
-                </Trigger>
-            </Style.Triggers>
             <Setter Property="Padding" Value="5 3" />
             <Setter Property="Margin" Value="3" />
-        </Style>
-        <Style x:Key="toggleCheckBox" BasedOn="{StaticResource {x:Type ToggleButton}}" TargetType="{x:Type CheckBox}">
             <Style.Triggers>
-                <Trigger Property="IsChecked" Value="True">
-                    <Setter Property="Foreground" Value="Green" />
-                </Trigger>
                 <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="FontWeight" Value="Normal" />
                     <Setter Property="Foreground" Value="Gray" />
                 </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Foreground" Value="Black" />
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Foreground" Value="DarkBlue" />
+                </Trigger>
             </Style.Triggers>
-            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style x:Key="toggleCheckBox" BasedOn="{StaticResource {x:Type ToggleButton}}" TargetType="{x:Type CheckBox}">
             <Setter Property="Padding" Value="5 3" />
             <Setter Property="Margin" Value="3" />
+            <Setter Property="Cursor" Value="Help" />
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Setter Property="Foreground" Value="Gray" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Foreground" Value="Black" />
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Foreground" Value="Green" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
@@ -70,9 +84,9 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Orientation="Horizontal">
-                <RadioButton Name="rbtnMatch" GroupName="mode" Style="{StaticResource toggleStyle}" Content="Match" IsChecked="True" Checked="ModeItem_Checked" />
-                <RadioButton Name="rbtnReplace" GroupName="mode" Style="{StaticResource toggleStyle}" Content="Replace" Checked="ModeItem_Checked" />
-                <RadioButton Name="rbtnSplitMode" GroupName="mode" Style="{StaticResource toggleStyle}" Content="Split" Checked="ModeItem_Checked" />
+                <RadioButton Name="rbtnMatch" GroupName="mode" Style="{StaticResource toggleStyle}" Content="MATCH" IsChecked="True" Checked="ModeItem_Checked" />
+                <RadioButton Name="rbtnReplace" GroupName="mode" Style="{StaticResource toggleStyle}" Content="REPLACE" Checked="ModeItem_Checked" />
+                <RadioButton Name="rbtnSplitMode" GroupName="mode" Style="{StaticResource toggleStyle}" Content="SPLIT" Checked="ModeItem_Checked" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Column="2">
@@ -97,10 +111,10 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" Text="Match regex: " />
-                <RichTextBox Name="rtbInputRegex" Grid.Column="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextChanged="TextChangedAutoRunEventHandler" FontSize="16" />
+                <RichTextBox Name="rtbInputRegex" Grid.Column="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontSize="16" Block.LineHeight="2" TextChanged="TextChangedAutoRunEventHandler"/>
 
                 <TextBlock Name="tblockInputReplace" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" Grid.Row="1" Text="Output format: " />
-                <RichTextBox Name="rtbInputReplace" Grid.Column="1" Grid.Row="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" ToolTip="Use $[groupname] format to get its value. The default group name is 1, 2, 3... etc. (if it wasn't set any other group name)." FontSize="16" TextChanged="TextChangedAutoRunEventHandler" />
+                <RichTextBox Name="rtbInputReplace" Grid.Column="1" Grid.Row="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" ToolTip="Use $[groupname] format to get its value. The default group name is 1, 2, 3... etc. (if it wasn't set any other group name)." FontSize="16" Block.LineHeight="2" TextChanged="TextChangedAutoRunEventHandler"/>
 
                 <Button Name="btnMatch" Grid.Column="2" Grid.RowSpan="2" IsDefault="True" Margin="2" Padding="5 3" ToolTip="Ctrl + P" Click="btnMatch_Click">Run</Button>
 
@@ -108,39 +122,39 @@
                     <StackPanel Orientation="Horizontal">
                         <CheckBox Name="cbMultiline"
                                   ToolTip="Multiline mode. Changes the meaning of ^ and $ so they match at the beginning and end, respectively, of any line, and not just the beginning and end of the entire string."
-                                  Style="{StaticResource CheckBox}"
+                                  Style="{StaticResource toggleCheckBox}"
                                   Click="CheckBox_Click">Multiline</CheckBox>
                         <CheckBox Name="cbSingleline"
                                   ToolTip="Specifies single-line mode. Changes the meaning of the dot (.) so it matches every character (instead of every character except \n)."
-                                  Style="{StaticResource CheckBox}"
+                                  Style="{StaticResource toggleCheckBox}"
                                   IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
                                   Click="CheckBox_Click">Singleline</CheckBox>
                         <CheckBox Name="cbIgnoreCase"
                                   ToolTip="Specifies case-insensitive matching."
-                                  Style="{StaticResource CheckBox}"
+                                  Style="{StaticResource toggleCheckBox}"
                                   Click="CheckBox_Click">IgnoreCase</CheckBox>
                         <CheckBox Name="cbIgnorePatternWhitespace"
                                   ToolTip="Eliminates unescaped white space from the pattern and enables comments marked with #. However, the IgnorePatternWhitespace value does not affect or eliminate white space in character classes."
-                                  Style="{StaticResource CheckBox}"
+                                  Style="{StaticResource toggleCheckBox}"
                                   IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
                                   Click="CheckBox_Click">IgnorePatternWhitespace</CheckBox>
                         <CheckBox Name="cbCultureInvariant"
                                   ToolTip="Specifies that cultural differences in language is ignored. See Performing Culture-Insensitive Operations in the RegularExpressions Namespace for more information."
-                                  Style="{StaticResource CheckBox}"
+                                  Style="{StaticResource toggleCheckBox}"
                                   IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
                                   Click="CheckBox_Click">CultureInvariant</CheckBox>
                         <CheckBox Name="cbECMAScript"
                                   ToolTip="Enables ECMAScript-compliant behavior for the expression. This value can be used only in conjunction with the IgnoreCase, Multiline, and Compiled values. The use of this value with any other values results in an exception."
-                                  Style="{StaticResource CheckBox}"
+                                  Style="{StaticResource toggleCheckBox}"
                                   Click="CheckBox_Click">ECMAScript</CheckBox>
                         <CheckBox Name="cbExplicitCapture"
                                   ToolTip="Specifies that the only valid captures are explicitly named or numbered groups of the form (?&lt;name&gt;…). This allows unnamed parentheses to act as noncapturing groups without the syntactic clumsiness of the expression (?:…)."
-                                  Style="{StaticResource CheckBox}"
+                                  Style="{StaticResource toggleCheckBox}"
                                   IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
                                   Click="CheckBox_Click">ExplicitCapture</CheckBox>
                         <CheckBox Name="cbRightToLeft"
                                   ToolTip="Specifies that the search will be from right to left instead of from left to right."
-                                  Style="{StaticResource CheckBox}"
+                                  Style="{StaticResource toggleCheckBox}"
                                   IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
                                   Click="CheckBox_Click">RightToLeft</CheckBox>
                     </StackPanel>
@@ -178,7 +192,7 @@
 
         <StatusBar Grid.Row="4" FontSize="{Binding ElementName=RegexTesterControl, Path=FontSize}">
             <StatusBarItem>
-                <TextBlock FontWeight="Bold" Margin="2">Total count :</TextBlock>
+                <TextBlock FontWeight="Bold" Margin="2">Total count:</TextBlock>
             </StatusBarItem>
             <StatusBarItem>
                 <TextBlock Name="tbMatchesCount" FontWeight="Bold" Margin="2" Text="{Binding Count, Mode=OneWay}" Foreground="DarkBlue" />
@@ -194,7 +208,7 @@
             <StatusBarItem HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="2" Foreground="DarkBlue">Font Size:</TextBlock>
-                    <Slider Minimum="12" Maximum="20" TickFrequency="1" Width="150"  VerticalAlignment="Center" Value="{Binding ElementName=RegexTesterControl, Path=FontSize}"  />
+                    <Slider Minimum="12" Maximum="20" TickFrequency="1" Width="150"  VerticalAlignment="Center" Value="{Binding ElementName=RegexTesterControl, Path=FontSize}" />
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>
