@@ -61,6 +61,12 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="extMenuItem" TargetType="{x:Type MenuItem}">
+            <Setter Property="Padding" Value="5 3" />
+            <Setter Property="Margin" Value="3" />
+            <Setter Property="Background" Value="DarkGray" />
+            <Setter Property="BorderBrush" Value="DarkBlue" />
+        </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
         <common:RegexTesterPageViewModel/>
@@ -90,10 +96,27 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Column="2">
-                <!--<Button Name="btnOpenInputText" Margin="2" Padding="5 3">Open...</Button>
-                <Button Name="btnSaveOutputText" Margin="2" Padding="5 3">Save...</Button>-->
                 <CheckBox Name="cbAutorun" IsChecked="{Binding Autorun, Mode=TwoWay}" Style="{StaticResource toggleCheckBox}" ToolTip="Ctrl + Shift + A">Autorun</CheckBox>
                 <CheckBox Name="cbOptimization" IsChecked="{Binding Optimization, Mode=TwoWay}" Style="{StaticResource toggleCheckBox}" Click="CheckBox_Click">Optimization</CheckBox>
+                <!--<Menu>
+                    <MenuItem Header="MENU" Style="{StaticResource extMenuItem}" Click="MenuItem_Click">
+                        <MenuItem Header="Save" Tag="command-save">
+                            <MenuItem.Icon>
+                                <Image Source="..\Resources\menu\save.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Generate C# code" Tag="command-generate-cs">
+                            <MenuItem.Icon>
+                                <Image Source="..\Resources\menu\generate_cs.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Generate VB code" Tag="command-generate-vb">
+                            <MenuItem.Icon>
+                                <Image Source="..\Resources\menu\generate_vb.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>-->
             </StackPanel>
         </Grid>
 

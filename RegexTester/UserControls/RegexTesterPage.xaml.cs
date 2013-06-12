@@ -38,7 +38,6 @@ namespace Sharomank.RegexTester
         private void init()
         {
             DataContext = viewModel;
-
             worker.WorkerSupportsCancellation = true;
             worker.WorkerReportsProgress = true;
 
@@ -301,6 +300,12 @@ namespace Sharomank.RegexTester
         private void RegexTesterControl_Unloaded(object sender, RoutedEventArgs e)
         {
             //TODO save current mode
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            //MenuItem menuItem = (MenuItem)e.Source;
+            //System.Console.WriteLine("command=" + menuItem.Tag);
         }
 
         #endregion

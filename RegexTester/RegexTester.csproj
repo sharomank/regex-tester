@@ -207,6 +207,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Resource Include="Resources\menu\generate_cs.png" />
+    <Resource Include="Resources\menu\save.png" />
+    <Resource Include="Resources\menu\generate_vb.png" />
     <Content Include="Resources\Package.ico" />
     <Content Include="screenshot.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -227,6 +230,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>
