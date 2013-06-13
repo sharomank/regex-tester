@@ -6,6 +6,9 @@ using System.Windows.Input;
 
 namespace Sharomank.RegexTester.Common
 {
+    /// <summary>
+    /// Author: Roman Kurbangaliyev (sharomank)
+    /// </summary>
     public class KeyboardHelper
     {
         public static bool IsKeyDown(KeyEventArgs e, Key key)

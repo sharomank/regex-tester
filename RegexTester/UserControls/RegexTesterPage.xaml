@@ -10,6 +10,9 @@
              Name="RegexTesterControl"
              FocusManager.FocusedElement="{Binding ElementName=rtbInputRegex}" KeyDown="RegexTesterControl_KeyDown" Unloaded="RegexTesterControl_Unloaded" Loaded="RegexTesterControl_Loaded">
     <UserControl.Resources>
+        <Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
         <Style x:Key="CheckBox" TargetType="CheckBox">
             <Setter Property="Margin" Value="5"></Setter>
             <Style.Triggers>
@@ -98,13 +101,15 @@
             <StackPanel Orientation="Horizontal" Grid.Column="2">
                 <CheckBox Name="cbAutorun" IsChecked="{Binding Autorun, Mode=TwoWay}" Style="{StaticResource toggleCheckBox}" ToolTip="Ctrl + Shift + A">Autorun</CheckBox>
                 <CheckBox Name="cbOptimization" IsChecked="{Binding Optimization, Mode=TwoWay}" Style="{StaticResource toggleCheckBox}" Click="CheckBox_Click">Optimization</CheckBox>
-                <!--<Menu>
-                    <MenuItem Header="MENU" Style="{StaticResource extMenuItem}" Click="MenuItem_Click">
-                        <MenuItem Header="Save" Tag="command-save">
+                <Menu>
+                    <MenuItem Header="MENU" Style="{StaticResource extMenuItem}" FontSize="{Binding ElementName=RegexTesterControl, Path=FontSize}" Click="MenuItem_Click">
+                        <MenuItem Header="Save..." InputGestureText="Ctrl + S" ToolTip="Ctrl + S" Tag="command-save">
                             <MenuItem.Icon>
                                 <Image Source="..\Resources\menu\save.png" />
                             </MenuItem.Icon>
                         </MenuItem>
+                        <MenuItem Header="Generate sample code by Regex in development." IsEnabled="False" />
+                        <!--
                         <MenuItem Header="Generate C# code" Tag="command-generate-cs">
                             <MenuItem.Icon>
                                 <Image Source="..\Resources\menu\generate_cs.png" />
@@ -115,8 +120,9 @@
                                 <Image Source="..\Resources\menu\generate_vb.png" />
                             </MenuItem.Icon>
                         </MenuItem>
+                        -->
                     </MenuItem>
-                </Menu>-->
+                </Menu>
             </StackPanel>
         </Grid>
 
@@ -125,7 +131,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Name="RegexRowReplace" Height="*"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -134,54 +140,115 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" Text="Match regex: " />
-                <RichTextBox Name="rtbInputRegex" Grid.Column="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontSize="16" Block.LineHeight="2" TextChanged="TextChangedAutoRunEventHandler"/>
+                <RichTextBox Name="rtbInputRegex" Grid.Column="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontSize="16" Block.LineHeight="2" ToolTip="Type regular expression in field." TextChanged="TextChangedAutoRunEventHandler"/>
 
                 <TextBlock Name="tblockInputReplace" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" Grid.Row="1" Text="Output format: " />
                 <RichTextBox Name="rtbInputReplace" Grid.Column="1" Grid.Row="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" ToolTip="Use $[groupname] format to get its value. The default group name is 1, 2, 3... etc. (if it wasn't set any other group name)." FontSize="16" Block.LineHeight="2" TextChanged="TextChangedAutoRunEventHandler"/>
 
                 <Button Name="btnMatch" Grid.Column="2" Grid.RowSpan="2" IsDefault="True" Margin="2" Padding="5 3" ToolTip="Ctrl + P" Click="btnMatch_Click">Run</Button>
 
-                <ScrollViewer Grid.Row="2" Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox Name="cbMultiline"
-                                  ToolTip="Multiline mode. Changes the meaning of ^ and $ so they match at the beginning and end, respectively, of any line, and not just the beginning and end of the entire string."
-                                  Style="{StaticResource toggleCheckBox}"
-                                  Click="CheckBox_Click">Multiline</CheckBox>
-                        <CheckBox Name="cbSingleline"
-                                  ToolTip="Specifies single-line mode. Changes the meaning of the dot (.) so it matches every character (instead of every character except \n)."
-                                  Style="{StaticResource toggleCheckBox}"
-                                  IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
-                                  Click="CheckBox_Click">Singleline</CheckBox>
-                        <CheckBox Name="cbIgnoreCase"
-                                  ToolTip="Specifies case-insensitive matching."
-                                  Style="{StaticResource toggleCheckBox}"
-                                  Click="CheckBox_Click">IgnoreCase</CheckBox>
-                        <CheckBox Name="cbIgnorePatternWhitespace"
-                                  ToolTip="Eliminates unescaped white space from the pattern and enables comments marked with #. However, the IgnorePatternWhitespace value does not affect or eliminate white space in character classes."
-                                  Style="{StaticResource toggleCheckBox}"
-                                  IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
-                                  Click="CheckBox_Click">IgnorePatternWhitespace</CheckBox>
-                        <CheckBox Name="cbCultureInvariant"
-                                  ToolTip="Specifies that cultural differences in language is ignored. See Performing Culture-Insensitive Operations in the RegularExpressions Namespace for more information."
-                                  Style="{StaticResource toggleCheckBox}"
-                                  IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
-                                  Click="CheckBox_Click">CultureInvariant</CheckBox>
-                        <CheckBox Name="cbECMAScript"
-                                  ToolTip="Enables ECMAScript-compliant behavior for the expression. This value can be used only in conjunction with the IgnoreCase, Multiline, and Compiled values. The use of this value with any other values results in an exception."
-                                  Style="{StaticResource toggleCheckBox}"
-                                  Click="CheckBox_Click">ECMAScript</CheckBox>
-                        <CheckBox Name="cbExplicitCapture"
-                                  ToolTip="Specifies that the only valid captures are explicitly named or numbered groups of the form (?&lt;name&gt;…). This allows unnamed parentheses to act as noncapturing groups without the syntactic clumsiness of the expression (?:…)."
-                                  Style="{StaticResource toggleCheckBox}"
-                                  IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
-                                  Click="CheckBox_Click">ExplicitCapture</CheckBox>
-                        <CheckBox Name="cbRightToLeft"
-                                  ToolTip="Specifies that the search will be from right to left instead of from left to right."
-                                  Style="{StaticResource toggleCheckBox}"
-                                  IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
-                                  Click="CheckBox_Click">RightToLeft</CheckBox>
-                    </StackPanel>
-                </ScrollViewer>
+                <WrapPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal">
+                    <CheckBox Name="cbMultiline"
+                                Content="Multiline"
+                                Style="{StaticResource toggleCheckBox}"
+                                Click="CheckBox_Click">
+                        <CheckBox.ToolTip>
+                            <TextBlock>
+                                Multiline mode. Changes the meaning of ^ and $ so they match at the beginning and end,
+                                <LineBreak />
+                                respectively, of any line, and not just the beginning and end of the entire string.
+                            </TextBlock>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox Name="cbSingleline"
+                                Content="Singleline"
+                                ToolTip="Specifies single-line mode. Changes the meaning of the dot (.) so it matches every character (instead of every character except \n)."
+                                Style="{StaticResource toggleCheckBox}"
+                                IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
+                                Click="CheckBox_Click">
+                    </CheckBox>
+                    <CheckBox Name="cbIgnoreCase"
+                                Content="IgnoreCase"
+                                ToolTip="Specifies case-insensitive matching."
+                                Style="{StaticResource toggleCheckBox}"
+                                Click="CheckBox_Click">
+                    </CheckBox>
+                    <CheckBox Name="cbIgnorePatternWhitespace"
+                                Content="IgnorePatternWhitespace"
+                                Style="{StaticResource toggleCheckBox}"
+                                IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
+                                Click="CheckBox_Click">
+                        <CheckBox.ToolTip>
+                            <TextBlock>
+                                Eliminates unescaped white space from the pattern and enables comments marked with #.
+                                <LineBreak />
+                                However, the IgnorePatternWhitespace value does not affect or eliminate white space in character classes.
+                            </TextBlock>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox Name="cbCultureInvariant"
+                                Content="CultureInvariant"
+                                Style="{StaticResource toggleCheckBox}"
+                                IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
+                                Click="CheckBox_Click">
+                        <CheckBox.ToolTip>
+                            <TextBlock>
+                                Specifies that cultural differences in language is ignored.
+                                <LineBreak />
+                                See Performing Culture-Insensitive Operations in the RegularExpressions Namespace for more information.
+                            </TextBlock>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox Name="cbExplicitCapture"
+                                Content="ExplicitCapture"
+                                Style="{StaticResource toggleCheckBox}"
+                                IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
+                                Click="CheckBox_Click">
+                        <CheckBox.ToolTip>
+                            <TextBlock>
+                                Specifies that the only valid captures are explicitly named or numbered groups of the form (?&lt;name&gt;…).
+                                <LineBreak />
+                                This allows unnamed parentheses to act as noncapturing groups without the syntactic clumsiness of the expression (?:…).
+                            </TextBlock>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox Name="cbRightToLeft"
+                                Content="RightToLeft"
+                                ToolTip="Specifies that the search will be from right to left instead of from left to right."
+                                Style="{StaticResource toggleCheckBox}"
+                                IsEnabled="{Binding ElementName=cbECMAScript, Path=IsChecked, Converter={converters:InverseBooleanConverter}}"
+                                Click="CheckBox_Click">
+                    </CheckBox>
+                    <CheckBox Name="cbECMAScript"
+                                Content="ECMAScript"
+                                Style="{StaticResource toggleCheckBox}"
+                                Click="CheckBox_Click">
+                        <CheckBox.ToolTip>
+                            <TextBlock>
+                                Enables ECMAScript-compliant behavior for the expression.
+                                <LineBreak />
+                                This value can be used only in conjunction with the IgnoreCase, Multiline, and Compiled values.
+                                <LineBreak />
+                                The use of this value with any other values results in an exception.
+                            </TextBlock>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox Name="cbCompiled"
+                                IsChecked="True"
+                                Content="Compiled"
+                                Style="{StaticResource toggleCheckBox}"
+                                Click="CheckBox_Click">
+                        <CheckBox.ToolTip>
+                            <TextBlock>
+                                Specifies that the regular expression is compiled to an assembly.
+                                <LineBreak /> 
+                                This yields faster execution but increases startup time.
+                                <LineBreak /> 
+                                This value should not be assigned to the Options property when calling the CompileToAssembly method.
+                            </TextBlock>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                </WrapPanel>
             </Grid>
         </GroupBox>
 

@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using Sharomank.RegexTester.Common;
 using Sharomank.RegexTester.Handlers;
+using Sharomank.RegexTester.Commands;
 using System.Windows.Documents;
 
 namespace Sharomank.RegexTester
@@ -130,6 +131,12 @@ namespace Sharomank.RegexTester
             if (e.Key == Key.P)//Ctrl + P
             {
                 RunProcess();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.S)//Ctrl + S
+            {
+                ExecuteCommand(new SaveCommand());
+                e.Handled = true;
             }
 
             if ((Keyboard.Modifiers & ModifierKeys.Shift) != ModifierKeys.Shift)
@@ -138,6 +145,7 @@ namespace Sharomank.RegexTester
             if (e.Key == Key.A)//Ctrl + Shift + A
             {
                 viewModel.Autorun = !viewModel.Autorun;
+                e.Handled = true;
             }
         }
 
@@ -252,6 +260,23 @@ namespace Sharomank.RegexTester
             }
         }
 
+        private void ExecuteCommand(Commands.ICommand command)
+        {
+            CommandContext ctx = CreateCommandContext();
+            command.Execute(ctx);
+        }
+
+        private CommandContext CreateCommandContext()
+        {
+            return new CommandContext(
+                GetCurrentMode(),
+                GetRegexOptions(),
+                GetInputText(rtbInputRegex),
+                GetInputText(rtbInputReplace),
+                tbInputText.Text,
+                tbOutputText.Text);
+        }
+
         #endregion
 
         #region Events
@@ -304,8 +329,14 @@ namespace Sharomank.RegexTester
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            //MenuItem menuItem = (MenuItem)e.Source;
-            //System.Console.WriteLine("command=" + menuItem.Tag);
+            MenuItem menuItem = (MenuItem)e.Source;
+            if (menuItem.Tag == null)
+            {
+                return;
+            }
+            string commandName = menuItem.Tag.ToString();
+            Commands.Commands cmd = (Commands.Commands)commandName;
+            ExecuteCommand(cmd.Command);
         }
 
         #endregion

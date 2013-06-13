@@ -143,6 +143,11 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\NoneCommand.cs" />
+    <Compile Include="Commands\CommandContext.cs" />
+    <Compile Include="Commands\Commands.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Common\KeyboardHelper.cs" />
     <Compile Include="Common\StatusInfo.cs" />
     <Compile Include="Handlers\RegexProcessHandler.cs" />

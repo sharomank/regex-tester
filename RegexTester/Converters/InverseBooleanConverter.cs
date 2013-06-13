@@ -8,6 +8,9 @@ using System.Globalization;
 
 namespace Sharomank.RegexTester.Converters
 {
+    /// <summary>
+    /// Author: Roman Kurbangaliyev (sharomank)
+    /// </summary>
     public class InverseBooleanConverter : MarkupExtension, IValueConverter
     {
         private static InverseBooleanConverter _converter = null;
