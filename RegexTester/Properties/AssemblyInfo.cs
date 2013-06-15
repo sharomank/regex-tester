@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Regex Tester")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Regular expression tester for Visual Studio 2010, 2012.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Roman Kurbangaliyev")]
 [assembly: AssemblyProduct("Regex Tester")]

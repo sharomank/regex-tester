@@ -54,16 +54,15 @@ namespace Sharomank.RegexTester
                     RefreshHeaders();
                 }
             };
-
-            cbOptimization.ToolTip = StatusInfo.OptimizationIsWorked.Tooltip;
         }
 
         #region Methods
 
         private RegexOptions GetRegexOptions()
         { 
-            var regexOptions = RegexOptions.Compiled;
-
+            var regexOptions = RegexOptions.None;
+            if (IsSelectedRegexOption(cbCompiled))
+                regexOptions = regexOptions | RegexOptions.Compiled;
             if (IsSelectedRegexOption(cbSingleline))
                 regexOptions = regexOptions | RegexOptions.Singleline;
             if (IsSelectedRegexOption(cbMultiline))
@@ -135,7 +134,7 @@ namespace Sharomank.RegexTester
             }
             else if (e.Key == Key.S)//Ctrl + S
             {
-                ExecuteCommand(new SaveCommand());
+                ExecuteCommand(CommandEnum.SAVE);
                 e.Handled = true;
             }
 
@@ -260,10 +259,10 @@ namespace Sharomank.RegexTester
             }
         }
 
-        private void ExecuteCommand(Commands.ICommand command)
+        private void ExecuteCommand(CommandEnum command)
         {
             CommandContext ctx = CreateCommandContext();
-            command.Execute(ctx);
+            command.Command.Execute(ctx);
         }
 
         private CommandContext CreateCommandContext()
@@ -327,16 +326,15 @@ namespace Sharomank.RegexTester
             //TODO save current mode
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void btnCommand_Click(object sender, RoutedEventArgs e)
         {
-            MenuItem menuItem = (MenuItem)e.Source;
-            if (menuItem.Tag == null)
+            Button btnCommand = (Button)e.Source;
+            if (btnCommand.Tag == null)
             {
                 return;
             }
-            string commandName = menuItem.Tag.ToString();
-            Commands.Commands cmd = (Commands.Commands)commandName;
-            ExecuteCommand(cmd.Command);
+            string commandName = btnCommand.Tag.ToString();
+            ExecuteCommand((CommandEnum)commandName);
         }
 
         #endregion

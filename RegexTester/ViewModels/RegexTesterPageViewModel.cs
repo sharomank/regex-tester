@@ -12,10 +12,10 @@ namespace Sharomank.RegexTester.Common
     {
         #region Fields
 
-        private int OPTIMIZATION_COUNT = 1000;
+        private int OPTIMIZE_COUNT = 1000;
 
         private StringBuilder _outputText = new StringBuilder();
-        private bool _optimization = true;
+        private bool _optimize = true;
         private bool _autorun = true;
         private int _count = 0;
         private StatusInfo _statusInfo = StatusInfo.None;
@@ -46,14 +46,6 @@ namespace Sharomank.RegexTester.Common
             }
         }
 
-        public string StatusTooltip
-        {
-            get
-            {
-                return _statusInfo.Tooltip;
-            }
-        }
-
         public Brush StatusBrush
         {
             get
@@ -62,16 +54,16 @@ namespace Sharomank.RegexTester.Common
             }
         }
 
-        public bool Optimization
+        public bool Optimize
         {
             get
             {
-                return _optimization;
+                return _optimize;
             }
             set
             {
-                _optimization = value;
-                NotifyPropertyChanged("Optimization");
+                _optimize = value;
+                NotifyPropertyChanged("Optimize");
             }
         }
         
@@ -92,11 +84,11 @@ namespace Sharomank.RegexTester.Common
         {
             get
             {
-                if (Optimization && _outputText.Length > OPTIMIZATION_COUNT)
+                if (Optimize && _outputText.Length > OPTIMIZE_COUNT)
                 {
-                    StatusInfo = StatusInfo.OptimizationIsWorked;
+                    StatusInfo = StatusInfo.OptimizeIsWorked;
                     StringBuilder sb = new StringBuilder();
-                    sb.Append(_outputText.ToString(0, OPTIMIZATION_COUNT));
+                    sb.Append(_outputText.ToString(0, OPTIMIZE_COUNT));
                     sb.Append(Environment.NewLine);
                     sb.Append(StatusInfo.Description);
                     return sb.ToString();

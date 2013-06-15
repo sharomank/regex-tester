@@ -64,11 +64,9 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="extMenuItem" TargetType="{x:Type MenuItem}">
-            <Setter Property="Padding" Value="5 3" />
+        <Style x:Key="commandButton" TargetType="{x:Type Button}">
             <Setter Property="Margin" Value="3" />
-            <Setter Property="Background" Value="DarkGray" />
-            <Setter Property="BorderBrush" Value="DarkBlue" />
+            <Setter Property="BorderBrush" Value="Blue" />
         </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
@@ -99,30 +97,11 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Column="2">
-                <CheckBox Name="cbAutorun" IsChecked="{Binding Autorun, Mode=TwoWay}" Style="{StaticResource toggleCheckBox}" ToolTip="Ctrl + Shift + A">Autorun</CheckBox>
-                <CheckBox Name="cbOptimization" IsChecked="{Binding Optimization, Mode=TwoWay}" Style="{StaticResource toggleCheckBox}" Click="CheckBox_Click">Optimization</CheckBox>
-                <Menu>
-                    <MenuItem Header="MENU" Style="{StaticResource extMenuItem}" FontSize="{Binding ElementName=RegexTesterControl, Path=FontSize}" Click="MenuItem_Click">
-                        <MenuItem Header="Save..." InputGestureText="Ctrl + S" ToolTip="Ctrl + S" Tag="command-save">
-                            <MenuItem.Icon>
-                                <Image Source="..\Resources\menu\save.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Generate sample code by Regex in development." IsEnabled="False" />
-                        <!--
-                        <MenuItem Header="Generate C# code" Tag="command-generate-cs">
-                            <MenuItem.Icon>
-                                <Image Source="..\Resources\menu\generate_cs.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Generate VB code" Tag="command-generate-vb">
-                            <MenuItem.Icon>
-                                <Image Source="..\Resources\menu\generate_vb.png" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        -->
-                    </MenuItem>
-                </Menu>
+                <CheckBox Name="cbAutorun" IsChecked="{Binding Autorun, Mode=TwoWay}" Style="{StaticResource toggleCheckBox}" ToolTip="Ctrl + Shift + A">AUTORUN</CheckBox>
+                <CheckBox Name="cbOptimize" IsChecked="{Binding Optimize, Mode=TwoWay}" Style="{StaticResource toggleCheckBox}" ToolTip="OPTIMIZE mode shows only first 1000 chars and add warning in the end of output data." Click="CheckBox_Click">OPTIMIZE</CheckBox>
+                <Button Name="btnCommandSave" Tag="command-save" Style="{StaticResource commandButton}" ToolTip="Save (Ctrl + S)" Click="btnCommand_Click">
+                    <Image Stretch="None" Source="..\Resources\commands\save.png" />
+                </Button>
             </StackPanel>
         </Grid>
 
@@ -145,7 +124,7 @@
                 <TextBlock Name="tblockInputReplace" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" Grid.Row="1" Text="Output format: " />
                 <RichTextBox Name="rtbInputReplace" Grid.Column="1" Grid.Row="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" ToolTip="Use $[groupname] format to get its value. The default group name is 1, 2, 3... etc. (if it wasn't set any other group name)." FontSize="16" Block.LineHeight="2" TextChanged="TextChangedAutoRunEventHandler"/>
 
-                <Button Name="btnMatch" Grid.Column="2" Grid.RowSpan="2" IsDefault="True" Margin="2" Padding="5 3" ToolTip="Ctrl + P" Click="btnMatch_Click">Run</Button>
+                <Button Name="btnMatch" Grid.Column="2" Grid.RowSpan="2" IsDefault="True" Margin="2" Padding="5 3" ToolTip="Ctrl + P" Click="btnMatch_Click">RUN</Button>
 
                 <WrapPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal">
                     <CheckBox Name="cbMultiline"

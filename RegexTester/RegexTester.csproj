@@ -212,9 +212,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Resource Include="Resources\menu\generate_cs.png" />
-    <Resource Include="Resources\menu\save.png" />
-    <Resource Include="Resources\menu\generate_vb.png" />
+    <Resource Include="Resources\commands\save.png" />
     <Content Include="Resources\Package.ico" />
     <Content Include="screenshot.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
