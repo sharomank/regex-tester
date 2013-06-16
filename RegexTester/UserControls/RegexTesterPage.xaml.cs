@@ -59,7 +59,7 @@ namespace Sharomank.RegexTester
         #region Methods
 
         private RegexOptions GetRegexOptions()
-        { 
+        {
             var regexOptions = RegexOptions.None;
             if (IsSelectedRegexOption(cbCompiled))
                 regexOptions = regexOptions | RegexOptions.Compiled;
@@ -187,13 +187,14 @@ namespace Sharomank.RegexTester
                 worker.CancelAsync();
                 int timeout = process_is_busy ? 500 : 100;
                 System.Threading.Thread.Sleep(timeout);
-            }    
+            }
 
             RegexProcessContext context = new RegexProcessContext();
             context.MatchRegex = new Regex(matchPattern, GetRegexOptions());
             context.ReplaceRegexPattern = GetInputText(rtbInputReplace);
             context.CurrentMode = GetCurrentMode();
             context.InputText = tbInputText.Text;
+            context.OutputMode = GetOutputMode();
 
             if (!worker.IsBusy)
             {
@@ -212,6 +213,11 @@ namespace Sharomank.RegexTester
                     RunProcess();
                 }
             }
+        }
+
+        private OutputMode GetOutputMode()
+        {
+            return (OutputMode)Convert.ToInt32(((ComboBoxItem)cbOutputMode.SelectedItem).Tag);
         }
 
         private static string GetInputText(RichTextBox rtb)

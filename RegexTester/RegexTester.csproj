@@ -145,10 +145,11 @@
   <ItemGroup>
     <Compile Include="Commands\NoneCommand.cs" />
     <Compile Include="Commands\CommandContext.cs" />
-    <Compile Include="Commands\Commands.cs" />
+    <Compile Include="Commands\CommandEnum.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Common\KeyboardHelper.cs" />
+    <Compile Include="Common\OutputMode.cs" />
     <Compile Include="Common\StatusInfo.cs" />
     <Compile Include="Handlers\RegexProcessHandler.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />

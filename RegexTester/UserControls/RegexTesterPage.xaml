@@ -94,6 +94,10 @@
                 <RadioButton Name="rbtnMatch" GroupName="mode" Style="{StaticResource toggleStyle}" Content="MATCH" IsChecked="True" Checked="ModeItem_Checked" />
                 <RadioButton Name="rbtnReplace" GroupName="mode" Style="{StaticResource toggleStyle}" Content="REPLACE" Checked="ModeItem_Checked" />
                 <RadioButton Name="rbtnSplitMode" GroupName="mode" Style="{StaticResource toggleStyle}" Content="SPLIT" Checked="ModeItem_Checked" />
+                <ComboBox Name="cbOutputMode" Margin="3" Height="36" VerticalContentAlignment="Center">
+                    <ComboBoxItem Tag="0" IsSelected="True">OUTPUT MODE: Text</ComboBoxItem>
+                    <ComboBoxItem Tag="1">SAMPLE CODE: C#</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Column="2">
@@ -213,7 +217,6 @@
                         </CheckBox.ToolTip>
                     </CheckBox>
                     <CheckBox Name="cbCompiled"
-                                IsChecked="True"
                                 Content="Compiled"
                                 Style="{StaticResource toggleCheckBox}"
                                 Click="CheckBox_Click">
@@ -248,7 +251,7 @@
 
             <GridSplitter ResizeDirection="Rows" Grid.Row="1" HorizontalAlignment="Stretch" Height="3" Background="DarkGray" />
 
-            <GroupBox Name="gbOutput" Header="Output text" Grid.Row="2" Style="{StaticResource GroupBox}">
+            <GroupBox Name="gbOutput" Header="Output result" Grid.Row="2" Style="{StaticResource GroupBox}">
                 <TextBox Name="tbOutputText"
                          IsReadOnly="True"
                          IsUndoEnabled="False"
@@ -273,7 +276,7 @@
                            Text="{Binding Status, Mode=OneWay}"
                            ToolTip="{Binding StatusTooltip, Mode=OneWay}"></TextBlock>
             </StatusBarItem>
-            
+
             <StatusBarItem HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="2" Foreground="DarkBlue">Font Size:</TextBlock>

@@ -13,6 +13,7 @@ namespace Sharomank.RegexTester.Common
         public Regex MatchRegex { get; set; }
         public string InputText { get; set; }
         public RegexMode CurrentMode { get; set; }
+        public OutputMode OutputMode { get; set; }
 
         public string ReplaceRegexPattern {
             get
