@@ -103,23 +103,11 @@ namespace Sharomank.RegexTester
             if (RegexRowReplace == null)
                 return;
 
-            if ((bool)rbtnMatch.IsChecked)
-            {
-                RegexRowReplace.Height = new GridLength(1, GridUnitType.Star);
-                tblockInputReplace.Text = "Output format: ";
-            }
-            else if ((bool)rbtnReplace.IsChecked)
-            {
-                RegexRowReplace.Height = new GridLength(1, GridUnitType.Star);
-                tblockInputReplace.Text = "Replace format: ";
-            }
-            else
-            {
-                RegexRowReplace.Height = new GridLength(0);
-            }
-
+            RegexRowReplace.Height = (bool)rbtnSplitMode.IsChecked ? new GridLength(0) : new GridLength(1, GridUnitType.Star);
             tblockInputReplace.Visibility = (bool)rbtnSplitMode.IsChecked ? Visibility.Hidden : Visibility.Visible;
             rtbInputReplace.Visibility = (bool)rbtnSplitMode.IsChecked ? Visibility.Hidden : Visibility.Visible;
+
+            AutorunProcess();
         }
 
         private void ControlKeyDown(KeyEventArgs e)
@@ -318,6 +306,11 @@ namespace Sharomank.RegexTester
         }
 
         private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            AutorunProcess();
+        }
+
+        private void cbOutputMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             AutorunProcess();
         }

@@ -153,6 +153,9 @@
     <Compile Include="Common\StatusInfo.cs" />
     <Compile Include="Handlers\RegexProcessHandler.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Strategies\CSharpStrategy.cs" />
+    <Compile Include="Strategies\DefaultStrategy.cs" />
+    <Compile Include="Strategies\IRegexProcessStrategy.cs" />
     <Compile Include="ViewModels\RegexTesterPageViewModel.cs" />
     <Compile Include="Common\RegexProcessContext.cs" />
     <Compile Include="Common\RegexMode.cs" />

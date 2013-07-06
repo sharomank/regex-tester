@@ -94,8 +94,8 @@
                 <RadioButton Name="rbtnMatch" GroupName="mode" Style="{StaticResource toggleStyle}" Content="MATCH" IsChecked="True" Checked="ModeItem_Checked" />
                 <RadioButton Name="rbtnReplace" GroupName="mode" Style="{StaticResource toggleStyle}" Content="REPLACE" Checked="ModeItem_Checked" />
                 <RadioButton Name="rbtnSplitMode" GroupName="mode" Style="{StaticResource toggleStyle}" Content="SPLIT" Checked="ModeItem_Checked" />
-                <ComboBox Name="cbOutputMode" Margin="3" Height="36" VerticalContentAlignment="Center">
-                    <ComboBoxItem Tag="0" IsSelected="True">OUTPUT MODE: Text</ComboBoxItem>
+                <ComboBox Name="cbOutputMode" Margin="3" Height="36" VerticalContentAlignment="Center" SelectionChanged="cbOutputMode_SelectionChanged">
+                    <ComboBoxItem Tag="0" IsSelected="True">OUTPUT MODE: Default</ComboBoxItem>
                     <ComboBoxItem Tag="1">SAMPLE CODE: C#</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
@@ -125,7 +125,7 @@
                 <TextBlock VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" Text="Match regex: " />
                 <RichTextBox Name="rtbInputRegex" Grid.Column="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontSize="16" Block.LineHeight="2" ToolTip="Type regular expression in field." TextChanged="TextChangedAutoRunEventHandler"/>
 
-                <TextBlock Name="tblockInputReplace" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" Grid.Row="1" Text="Output format: " />
+                <TextBlock Name="tblockInputReplace" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" Grid.Row="1" Text="Replacement format: " />
                 <RichTextBox Name="rtbInputReplace" Grid.Column="1" Grid.Row="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" ToolTip="Use $[groupname] format to get its value. The default group name is 1, 2, 3... etc. (if it wasn't set any other group name)." FontSize="16" Block.LineHeight="2" TextChanged="TextChangedAutoRunEventHandler"/>
 
                 <Button Name="btnMatch" Grid.Column="2" Grid.RowSpan="2" IsDefault="True" Margin="2" Padding="5 3" ToolTip="Ctrl + P" Click="btnMatch_Click">RUN</Button>

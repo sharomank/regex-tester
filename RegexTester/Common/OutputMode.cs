@@ -8,7 +8,7 @@ namespace Sharomank.RegexTester.Common
 {
     public enum OutputMode
     {
-        Text = 0,
-        SampleCodeOnCS = 1
+        Default = 0,
+        CSharpSampleCode = 1
     }
 }

@@ -14,7 +14,6 @@ namespace Sharomank.RegexTester.Common
             Brushes.Green);
 
         private string _title;
-        private string _tooltip;
         private string _description;
         private Brush _brush;
 
