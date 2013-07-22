@@ -95,8 +95,12 @@
                 <RadioButton Name="rbtnReplace" GroupName="mode" Style="{StaticResource toggleStyle}" Content="REPLACE" Checked="ModeItem_Checked" />
                 <RadioButton Name="rbtnSplitMode" GroupName="mode" Style="{StaticResource toggleStyle}" Content="SPLIT" Checked="ModeItem_Checked" />
                 <ComboBox Name="cbOutputMode" Margin="3" Height="36" VerticalContentAlignment="Center" SelectionChanged="cbOutputMode_SelectionChanged">
-                    <ComboBoxItem Tag="0" IsSelected="True">OUTPUT MODE: Default</ComboBoxItem>
-                    <ComboBoxItem Tag="1">SAMPLE CODE: C#</ComboBoxItem>
+                    <ComboBoxItem Tag="0" IsSelected="True">
+                        <TextBlock>OUTPUT MODE: <Bold>Default</Bold></TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="1">
+                        <TextBlock>OUTPUT MODE: <Bold>C# sample</Bold></TextBlock>
+                    </ComboBoxItem>
                 </ComboBox>
             </StackPanel>
 

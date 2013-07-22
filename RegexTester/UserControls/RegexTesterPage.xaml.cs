@@ -85,7 +85,7 @@ namespace Sharomank.RegexTester
 
         private bool IsSelectedRegexOption(CheckBox cb)
         {
-            return cb.IsEnabled == true && cb.IsChecked == true;
+            return cb.IsChecked == true && cb.IsEnabled == true;
         }
 
         private RegexMode GetCurrentMode()
