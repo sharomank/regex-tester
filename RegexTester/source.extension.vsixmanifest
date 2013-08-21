@@ -3,8 +3,8 @@
   <Identifier Id="dcad2d98-1e91-4090-81a0-ec0641347bf8">
     <Name>Regex Tester</Name>
     <Author>Roman Kurbangaliyev</Author>
-    <Version>1.4.1</Version>
-    <Description xml:space="preserve">Regular expression tester for Visual Studio 2010, 2012.</Description>
+    <Version>1.4.2</Version>
+    <Description xml:space="preserve">Regular expression tester for Visual Studio 2010, 2012 and 2013.</Description>
     <Locale>1033</Locale>
     <MoreInfoUrl>http://visualstudiogallery.msdn.microsoft.com/16b9d664-d88c-460e-84a5-700ab40ba452</MoreInfoUrl>
     <License>license.txt</License>
@@ -18,6 +18,11 @@
         <Edition>Pro</Edition>
       </VisualStudio>
       <VisualStudio Version="11.0">
+        <Edition>Ultimate</Edition>
+        <Edition>Premium</Edition>
+        <Edition>Pro</Edition>
+      </VisualStudio>
+      <VisualStudio Version="12.0">
         <Edition>Ultimate</Edition>
         <Edition>Premium</Edition>
         <Edition>Pro</Edition>
