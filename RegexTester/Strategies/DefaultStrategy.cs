@@ -95,7 +95,7 @@ namespace Sharomank.RegexTester.Strategies
                     if (worker.CancellationPending)
                         return string.Empty;
 
-                    value = value.Replace(string.Format("$[{0}]", groupName), m.Groups[groupName].Value);
+                    value = value.Replace(string.Format("${{{0}}}", groupName), m.Groups[groupName].Value);
                 }
                 count++;
                 return value;
@@ -119,7 +119,7 @@ namespace Sharomank.RegexTester.Strategies
 
             foreach (var groupName in context.MatchRegex.GetGroupNames())
             {
-                string group = string.Format("$[{0}]", groupName);
+                string group = string.Format("${{{0}}}", groupName);
                 if (context.ReplaceRegexPattern.Contains(group))
                 {
                     groups.Add(groupName, group);
