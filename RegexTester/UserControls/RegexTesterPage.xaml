@@ -127,7 +127,7 @@
                 <RichTextBox Name="rtbInputRegex" Grid.Column="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontSize="16" Block.LineHeight="2" ToolTip="Type regular expression in field." TextChanged="TextChangedAutoRunEventHandler"/>
 
                 <TextBlock Name="tblockInputReplace" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" Grid.Row="1" Text="Replacement format: " />
-                <RichTextBox Name="rtbInputReplace" Grid.Column="1" Grid.Row="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" ToolTip="Use $[groupname] format to get its value. The default group name is 1, 2, 3... etc. (if it wasn't set any other group name)." FontSize="16" Block.LineHeight="2" TextChanged="TextChangedAutoRunEventHandler"/>
+                <RichTextBox Name="rtbInputReplace" Grid.Column="1" Grid.Row="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" ToolTip="Use ${groupname} format to get its value. The default group name is 1, 2, 3... etc. (if it wasn't set any other group name)." FontSize="16" Block.LineHeight="2" TextChanged="TextChangedAutoRunEventHandler"/>
 
                 <Button Name="btnMatch" Grid.Column="2" Grid.RowSpan="2" IsDefault="True" Margin="2" Padding="5 3" ToolTip="Ctrl + P" Click="btnMatch_Click">RUN</Button>
 
