@@ -247,7 +247,7 @@
                 <TextBox Name="tbInputText"
                          AcceptsReturn="True"
                          AcceptsTab="True"
-                         VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" />
+                         VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" TextChanged="TextChangedAutoRunEventHandler" />
             </GroupBox>
 
             <GridSplitter ResizeDirection="Rows" Grid.Row="1" HorizontalAlignment="Stretch" Height="3" Background="DarkGray" />
