@@ -15,7 +15,7 @@ namespace Sharomank.RegexTester
     /// <summary>
     /// Author: Roman Kurbangaliyev (sharomank)
     /// </summary>
-    public partial class RegexTesterPage : UserControl
+    public partial class RegexTesterPage : UserControl, IDisposable
     {
         #region Fields
 
@@ -177,13 +177,7 @@ namespace Sharomank.RegexTester
                 System.Threading.Thread.Sleep(timeout);
             }
 
-            RegexProcessContext context = new RegexProcessContext();
-            context.MatchRegex = new Regex(matchPattern, GetRegexOptions());
-            context.ReplaceRegexPattern = GetInputText(rtbInputReplace);
-            context.CurrentMode = GetCurrentMode();
-            context.InputText = tbInputText.Text;
-            context.OutputMode = GetOutputMode();
-
+            RegexProcessContext context = new RegexProcessContext(matchPattern, GetRegexOptions(), GetInputText(rtbInputReplace), tbInputText.Text, GetCurrentMode(), GetOutputMode());
             if (!worker.IsBusy)
             {
                 worker.RunWorkerAsync(context);
@@ -268,6 +262,20 @@ namespace Sharomank.RegexTester
                 GetInputText(rtbInputReplace),
                 tbInputText.Text,
                 tbOutputText.Text);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                worker.Dispose();
+            }
         }
 
         #endregion

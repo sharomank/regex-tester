@@ -9,22 +9,38 @@ namespace Sharomank.RegexTester.Common
     public class RegexProcessContext
     {
         private string _replaceRegexPattern;
+        private Regex _matchRegex;
 
-        public Regex MatchRegex { get; set; }
-        public string InputText { get; set; }
-        public RegexMode CurrentMode { get; set; }
-        public OutputMode OutputMode { get; set; }
+        public string MatchRegexExpression { get; private set; }
+        public RegexOptions MatchRegexOptions { get; private set; }
+        public string ReplaceRegexPattern { get; private set; }
+        public string InputText { get; private set; }
+        public RegexMode CurrentMode { get; private set; }
+        public OutputMode OutputMode { get; private set; }
 
-        public string ReplaceRegexPattern {
+        public RegexProcessContext(string matchRegexExpression, RegexOptions matchRegexOptions, string replaceRegexPattern, string inputText, RegexMode currentMode, OutputMode outputMode)
+        {
+            MatchRegexExpression = matchRegexExpression;
+            MatchRegexOptions = matchRegexOptions;
+            InputText = inputText;
+            CurrentMode = currentMode;
+            OutputMode = outputMode;
+            if (replaceRegexPattern == null)
+            {
+                replaceRegexPattern = String.Empty;
+            }
+            ReplaceRegexPattern = replaceRegexPattern.Replace("\\n", Environment.NewLine).Replace("\\t", "	");
+        }
+
+        public Regex MatchRegex
+        {
             get
             {
-                return _replaceRegexPattern;
-            }
-            set
-            {
-                if (value == null)
-                    value = String.Empty;
-                _replaceRegexPattern = value.Replace("\\n", Environment.NewLine).Replace("\\t", "	");
+                if (_matchRegex == null)
+                {
+                    _matchRegex = new Regex(MatchRegexExpression, MatchRegexOptions);
+                }
+                return _matchRegex;
             }
         }
     }

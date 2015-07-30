@@ -16,8 +16,8 @@ namespace Sharomank.RegexTester.Strategies
     {
         public bool Match(BackgroundWorker worker, RegexTesterPageViewModel viewModel, RegexProcessContext context)
         {
-            viewModel.AppendOutputText("string pattern = @\"" + StringFormat(context.MatchRegex.ToString()) + "\";");
-            viewModel.AppendOutputText("RegexOptions regexOptions = " + GetRegexOptions(context.MatchRegex.Options) + ";");
+            viewModel.AppendOutputText("string pattern = @\"" + StringFormat(context.MatchRegexExpression) + "\";");
+            viewModel.AppendOutputText("RegexOptions regexOptions = " + GetRegexOptions(context.MatchRegexOptions) + ";");
             viewModel.AppendOutputText("Regex regex = new Regex(pattern, regexOptions);");
             viewModel.AppendOutputText("string inputData = @\"" + StringFormat(context.InputText) + "\";");
             viewModel.AppendOutputText("foreach (Match match in regex.Matches(inputData))");
@@ -33,8 +33,8 @@ namespace Sharomank.RegexTester.Strategies
 
         public bool Split(BackgroundWorker worker, RegexTesterPageViewModel viewModel, RegexProcessContext context)
         {
-            viewModel.AppendOutputText("string pattern = @\"" + StringFormat(context.MatchRegex.ToString()) + "\";");
-            viewModel.AppendOutputText("RegexOptions regexOptions = " + GetRegexOptions(context.MatchRegex.Options) + ";");
+            viewModel.AppendOutputText("string pattern = @\"" + StringFormat(context.MatchRegexExpression) + "\";");
+            viewModel.AppendOutputText("RegexOptions regexOptions = " + GetRegexOptions(context.MatchRegexOptions) + ";");
             viewModel.AppendOutputText("Regex regex = new Regex(pattern, regexOptions);");
             viewModel.AppendOutputText("string inputData = @\"" + StringFormat(context.InputText) + "\";");
             viewModel.AppendOutputText("string[] result = regex.Split(inputData);");
@@ -44,8 +44,8 @@ namespace Sharomank.RegexTester.Strategies
 
         public bool Replace(BackgroundWorker worker, RegexTesterPageViewModel viewModel, RegexProcessContext context)
         {
-            viewModel.AppendOutputText("string pattern = @\"" + StringFormat(context.MatchRegex.ToString()) + "\";");
-            viewModel.AppendOutputText("RegexOptions regexOptions = " + GetRegexOptions(context.MatchRegex.Options) + ";");
+            viewModel.AppendOutputText("string pattern = @\"" + StringFormat(context.MatchRegexExpression) + "\";");
+            viewModel.AppendOutputText("RegexOptions regexOptions = " + GetRegexOptions(context.MatchRegexOptions) + ";");
             viewModel.AppendOutputText("Regex regex = new Regex(pattern, regexOptions);");
             viewModel.AppendOutputText("string inputData = @\"" + StringFormat(context.InputText) + "\";");
             viewModel.AppendOutputText("string replacement = @\"" + StringFormat(context.ReplaceRegexPattern) + "\";");
