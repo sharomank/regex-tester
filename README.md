@@ -1,6 +1,6 @@
 Regex Tester
 ============
-This extension added (contains) tool for testing regular expressions in Visual Studio 2010-2015.
+This extension is a tool for testing regular expressions in Visual Studio 2017.
 
 Tool simple and easy to use, the processing occurs in a background thread.
 
