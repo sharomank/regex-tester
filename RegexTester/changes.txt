@@ -1,0 +1,25 @@
+﻿Version 2.0.0 - May 3, 2017:
+- Migration to Visual Studio 2017.
+NOTE: Old releases are available on GitHub here: https://github.com/sharomank/regex-tester/releases
+
+Version 1.5.2 - Jul 30, 2015:
+- Improve regex parsing when regular expression is changing (issue #7).
+
+Version 1.5.1 - Feb 23, 2015:
+- Autorun triggered on changing the input text.
+
+Version 1.5.0 - Feb 19, 2015:
+- Added support for Visual Studio 2015 and fixed problem regex replacement & code generation, now instead of the square brackets need touse curly brackets.
+
+Version 1.4.2 - Aug 21, 2013:
+- Added support for Visual Studio 2013.
+
+Old Versions:
+1.4.1 - Fixed support for Visual Studio 2010.
+1.4.0 - Added feature "Output mode", you can generate C# samples for yours regex.
+1.3.2 - Added command "Save", code refactoring and UI changes.
+1.3.1 - Unification UI styles and fixed some problem.
+1.3.0 - Added support for Visual Studio 2012.
+1.2.0 - Refactoring: new optimization mode (auto use at test large data),improvement performance, small update UI and fixed some problem.
+1.1.0 - Added features: autorun, multitabs, async optimization, hotkeys and etc.
+1.0.0 - Initial release.

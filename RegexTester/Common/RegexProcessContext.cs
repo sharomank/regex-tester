@@ -8,7 +8,6 @@ namespace Sharomank.RegexTester.Common
     /// </summary>
     public class RegexProcessContext
     {
-        private string _replaceRegexPattern;
         private Regex _matchRegex;
 
         public string MatchRegexExpression { get; private set; }

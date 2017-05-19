@@ -102,9 +102,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Column="2">
-                <CheckBox Name="cbAutorun" IsChecked="{Binding Autorun, Mode=TwoWay}" Style="{StaticResource toggleCheckBox}" ToolTip="Ctrl + Shift + A">AUTORUN</CheckBox>
+                <CheckBox Name="cbAutorun" IsChecked="{Binding Autorun, Mode=TwoWay}" Style="{StaticResource toggleCheckBox}" ToolTip="Ctrl+Shift+A">AUTORUN</CheckBox>
                 <CheckBox Name="cbOptimize" IsChecked="{Binding Optimize, Mode=TwoWay}" Style="{StaticResource toggleCheckBox}" ToolTip="OPTIMIZE mode shows only first 1000 chars and add warning in the end of output data." Click="CheckBox_Click">OPTIMIZE</CheckBox>
-                <Button Name="btnCommandSave" Tag="command-save" Style="{StaticResource commandButton}" ToolTip="Save (Ctrl + S)" Click="btnCommand_Click">
+                <Button Name="btnCommandSave" Tag="command-save" Style="{StaticResource commandButton}" ToolTip="Save (Ctrl+S)" Click="btnCommand_Click">
                     <Image Stretch="None" Source="..\Resources\commands\save.png" />
                 </Button>
             </StackPanel>
@@ -129,7 +129,7 @@
                 <TextBlock Name="tblockInputReplace" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" Grid.Row="1" Text="Replacement format: " />
                 <RichTextBox Name="rtbInputReplace" Grid.Column="1" Grid.Row="1" Padding="2" Margin="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" ToolTip="Use ${groupname} format to get its value. The default group name is 1, 2, 3... etc. (if it wasn't set any other group name)." FontSize="16" Block.LineHeight="2" TextChanged="TextChangedAutoRunEventHandler"/>
 
-                <Button Name="btnMatch" Grid.Column="2" Grid.RowSpan="2" IsDefault="True" Margin="2" Padding="5 3" ToolTip="Ctrl + P" Click="btnMatch_Click">RUN</Button>
+                <Button Name="btnMatch" Grid.Column="2" Grid.RowSpan="2" IsDefault="True" Margin="2" Padding="5 3" ToolTip="Ctrl+P" Click="btnMatch_Click">RUN</Button>
 
                 <WrapPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal">
                     <CheckBox Name="cbMultiline"

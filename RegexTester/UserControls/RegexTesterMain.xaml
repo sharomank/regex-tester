@@ -10,11 +10,11 @@
     <TabControl Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged">
         <TabControl.ContextMenu>
             <ContextMenu>
-                <MenuItem Name="MenuItem_CloseTab"  Header="Close Tab" InputGestureText="Ctrl + Shift + W" Click="MenuItem_CloseTab_Click"/>
+                <MenuItem Name="MenuItem_CloseTab"  Header="Close Tab" InputGestureText="Ctrl+Shift+W" Click="MenuItem_CloseTab_Click"/>
                 <MenuItem Name="MenuItem_CloseOtherTabs" Header="Close Others Tabs" Click="MenuItem_CloseOtherTabs_Click" />
                 <MenuItem Name="MenuItem_CloseAllTabs" Header="Close All Tabs" Click="MenuItem_CloseAllTabs_Click" />
                 <Separator />
-                <MenuItem Name="MenuItem_NewTab" Header="New Tab" InputGestureText="Ctrl + T" Click="MenuItem_NewTab_Click" />
+                <MenuItem Name="MenuItem_NewTab" Header="New Tab" InputGestureText="Ctrl+Shift+T" Click="MenuItem_NewTab_Click" />
             </ContextMenu>
         </TabControl.ContextMenu>
         <TabItem Header="+" Name="tabItemCreator" ToolTip="New Tab" FontWeight="Normal" FontSize="12" IsSelected="False" />

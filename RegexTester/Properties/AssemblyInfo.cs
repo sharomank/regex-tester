@@ -7,11 +7,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Regex Tester")]
-[assembly: AssemblyDescription("Regular Expression Tester for Visual Studio 2010-2015.")]
+[assembly: AssemblyDescription("Regular Expression Tester for Visual Studio 2017.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Roman Kurbangaliyev")]
 [assembly: AssemblyProduct("Regex Tester")]
-[assembly: AssemblyCopyright("Copyright © Roman Kurbangaliyev 2015")]
+[assembly: AssemblyCopyright("Copyright © Roman Kurbangaliyev 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]   
 [assembly: ComVisible(false)]     
@@ -28,8 +28,8 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("1.5.2.0")]
-[assembly: AssemblyFileVersion("1.5.2.0")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
 
 
 
