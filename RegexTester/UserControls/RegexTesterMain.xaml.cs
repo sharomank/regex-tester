@@ -29,6 +29,7 @@ namespace Sharomank.RegexTester
             newTab.Header = GetTabItemName(MainTabControl);
             newTab.Content = new RegexTesterPage();
             MainTabControl.Items.Add(newTab);
+
             Dispatcher.BeginInvoke(new Action(() => { newTab.Focus(); }));
         }
 
