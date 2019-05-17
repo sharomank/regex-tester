@@ -29,6 +29,7 @@ namespace Sharomank.RegexTester
             newTab.Header = GetTabItemName(MainTabControl);
             newTab.Content = new RegexTesterPage();
             MainTabControl.Items.Add(newTab);
+
             Dispatcher.BeginInvoke(new Action(() => { newTab.Focus(); }));
         }
 
@@ -54,12 +55,9 @@ namespace Sharomank.RegexTester
 
         private void RootControl_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control && e.Key == Key.W)
             {
-                if (e.Key == Key.T)
-                    AddNewTab();
-                else if ((Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift && e.Key == Key.W)
-                    CloseTab();
+                CloseTab();
             }
         }
 

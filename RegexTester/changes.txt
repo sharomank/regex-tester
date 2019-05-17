@@ -1,6 +1,8 @@
-﻿Version 2.0.0 - May 3, 2017:
+﻿Version 2.1.0 - May 13, 2019:
+- Migration to Visual Studio 2019.
+
+Version 2.0.0 - May 3, 2017:
 - Migration to Visual Studio 2017.
-NOTE: Old releases are available on GitHub here: https://github.com/sharomank/regex-tester/releases
 
 Version 1.5.2 - Jul 30, 2015:
 - Improve regex parsing when regular expression is changing (issue #7).
@@ -13,6 +15,8 @@ Version 1.5.0 - Feb 19, 2015:
 
 Version 1.4.2 - Aug 21, 2013:
 - Added support for Visual Studio 2013.
+
+NOTE: Old releases are available on GitHub here: https://github.com/sharomank/regex-tester/releases
 
 Old Versions:
 1.4.1 - Fixed support for Visual Studio 2010.
